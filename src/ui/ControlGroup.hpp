@@ -46,4 +46,19 @@ private:
   s32 mSize;
 };
 
+// Vtable at 0x803aa344
+struct SolveUIControl: public ControlGroup::Functor {
+  float val;
+  SolveUIControl() : val() {}
+  virtual void operator()(UIControl* control);
+};
+
+// Vtable at 0x803aa350
+struct ClampToAnimStartFrame: public ControlGroup::Functor {
+  float val;
+  ClampToAnimStartFrame() : val() {}
+  virtual void operator()(UIControl* control);
+};
+
+
 } // namespace UI

@@ -44,7 +44,7 @@ void ControlGroup::create(Page* page, int capacity) {
 
   for (int i = 0; i < capacity; ++i) {
     mData[i] = nullptr;
-    mDataSorted[i] = nullptr;
+ mDataSorted[i] = nullptr;
   }
 }
 
@@ -110,6 +110,17 @@ void ControlGroup::transform(ControlGroup::Functor& functor) {
     functor(mData[i]);
     mData[i]->getChildren()->transform(functor);
   }
+}
+
+void ClampToAnimStartFrame::operator()(UIControl* control){
+  float min = control->getAnimStartFrame();
+  if (min > this->val) {
+    this->val = min;
+  }
+}
+
+void SolveUIControl::operator()(UIControl* control){
+  control->solve(val);
 }
 
 } // namespace UI

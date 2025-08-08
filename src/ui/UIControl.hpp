@@ -71,6 +71,8 @@ public:
 
   virtual void solveAnim(float& page_anim_x, float frame);
 
+  float getAnimStartFrame();
+
   // Something stripped
   void debug();
 
